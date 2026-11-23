@@ -1597,8 +1597,9 @@ jobs:
             sed -i '/^CONFIG_LOCALVERSION=/ s/="\([^"]*\)"/="'"$CLEAN_VERSION"'"/' ./common/arch/arm64/configs/gki_defconfig
           elif [ ! -f "build/build.sh" ]; then
             cd ./common
-            BID="ab$((RANDOM % 90000000 + 10000000))"
-            GHASH=$(git rev-parse --verify HEAD | cut -c1-13)
+            # 固定为原厂 OnePlus PLQ110 的 localversion 片段，使 banner 与官方逐字节一致
+            BID="abogki537459655"
+            GHASH="9bc34d5b0c79"
             case "${{ inputs.android_version }}-${{ inputs.kernel_version }}" in
               "android14-6.1")  KMI_TAG="android14-11" ;;
               "android15-6.6")  KMI_TAG="android15-8" ;;
